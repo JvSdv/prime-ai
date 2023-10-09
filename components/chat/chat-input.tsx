@@ -15,6 +15,7 @@ import { useCallback, useEffect } from "react";
 import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
 import ChatSettingsMenu from "./chat-settings-menu";
+import MicrophoneInput from "./microphone-input";
 
 const ChatInput = () => {
   const { addChatHandler } = useChats();
@@ -99,20 +100,21 @@ const ChatInput = () => {
               setInputValue(e.target.value);
             }}
           />
-          <button type="submit">
+          <MicrophoneInput />
+          <button type="submit" className="p-2">
             <Send
               size="18"
-              className="mr-4 text-neutral-600 dark:peer-focus:text-neutral-500 peer-focus:text-neutral-300"
+              className="mx-2 text-neutral-600 dark:peer-focus:text-neutral-500 peer-focus:text-neutral-300"
             />
           </button>
           {/* Regenerate Controller - Desktop */}
           {!isHandling && isRegenerateSeen && (
             <RefreshCw
-              onClick={regenerateHandler}
-              size="18"
-              className="mr-4 cursor-pointer text-neutral-600 dark:peer-focus:text-neutral-500 peer-focus:text-neutral-300 sm:hidden"
+            onClick={regenerateHandler}
+            size="18"
+            className="mr-4 cursor-pointer text-neutral-600 dark:peer-focus:text-neutral-500 peer-focus:text-neutral-300 sm:hidden"
             />
-          )}
+            )}
         </form>
       </div>
     </div>
