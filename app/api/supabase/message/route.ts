@@ -1,7 +1,7 @@
 import { createClient } from "@/lib/supabase/supabase-server";
 import { NextResponse } from "next/server";
 
-// POST
+// POST create a new message
 export async function POST(req: Request): Promise<Response> {
   const { messages } = await req.json();
   // If no message, return 400
@@ -42,6 +42,43 @@ export async function POST(req: Request): Promise<Response> {
     return new Response(error.message, { status: 400 });
   } else {
     return NextResponse.json(messagesInserted);
+  }
+}
+
+// UPDATE modify a message
+export async function PUT(req: Request): Promise<Response> {
+  const { message } = await req.json();
+
+  // If no message, return 400
+  if (!message) {
+    return new Response("No message!", { status: 400 });
+  }
+
+  // Create Supabase Server Client
+  const supabase = createClient();
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  // If no session, return 401
+  if (!session) {
+    return new Response("Not authorized!", { status: 401 });
+  }
+
+  // Update Message
+  const { data: messagesUpdated, error } = await supabase
+    .from("messages")
+    .update({
+      content: message.content,
+    })
+    .match({ id: message.id, owner: session?.user?.id })
+    .select("id,role,content");
+
+  if (error) {
+    console.log(error);
+    return new Response(error.message, { status: 400 });
+  } else {
+    return NextResponse.json(messagesUpdated);
   }
 }
 
