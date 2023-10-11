@@ -66,8 +66,8 @@ export default function MicrophoneInput() {
   
   return (
     <div className="flex items-center justify-center mr-3">
-      <button onClick={handleToggleRecording} className="p-2 transition-colors duration-200 ease-in-out bg-transparent hover:bg-red-300 hover:text-white active:bg-red-700 focus:outline-none rounded">
-        <Mic size={24} className={`${isRecording ? 'text-red-500' : 'text-neutral-600 dark:peer-focus:text-neutral-500 peer-focus:text-neutral-300'}`} />
+      <button onClick={handleToggleRecording} className="p-2 transition-colors duration-200 ease-in-out bg-transparent hover:bg-red-300 hover:text-white active:bg-red-700 focus:outline-none rounded" type="button">
+        <Mic size={22} className={`${isRecording ? 'text-red-500' : 'text-neutral-600 dark:peer-focus:text-neutral-500 peer-focus:text-neutral-300'}`} />
       </button>
     </div>
   );

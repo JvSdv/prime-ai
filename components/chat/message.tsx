@@ -12,6 +12,7 @@ import rehypeHighlight from "rehype-highlight";
 import remarkGfm from "remark-gfm";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import useMessages from "@/hooks/useMenssage";
+import { cn } from "@/utils/cn";
 
 const Message = ({ message }: { message: MessageT }) => {
   const isAssistant = message.role === "assistant";
@@ -132,10 +133,10 @@ const Message = ({ message }: { message: MessageT }) => {
             </div>
           ) : (
             <textarea
-              className="w-full p-2 rounded-md dark:bg-neutral-950/50 bg-neutral-200 resize-none overflow-clip"
+              className="break-words w-full resize-none focus:outline-none focus:ring-0 dark:bg-neutral-950/20 p-2 bg-neutral-200"
               value={editContent ?? ""}
               onChange={(e) => setEditContent(e.target.value)}
-              rows={Math.max(1, Math.ceil((editContent?.length ?? 0) / 50))}
+              rows={Math.max(1, Math.ceil((editContent ?? '').length / 44))}
             />
           )}
         </div>
@@ -143,7 +144,7 @@ const Message = ({ message }: { message: MessageT }) => {
           <button onClick={handleDelete}>
             <Trash2 size={18} className="cursor-pointer text-neutral-600 dark:peer-focus:text-neutral-500 peer-focus:text-neutral-300" />
           </button>
-          {!isEditing ? (
+          {/* {!isEditing ? (
             <button onClick={handleToggleEdit}>
               <FileEdit size={18} className="cursor-pointer text-neutral-600 dark:peer-focus:text-neutral-500 peer-focus:text-neutral-300" />
             </button>
@@ -151,7 +152,7 @@ const Message = ({ message }: { message: MessageT }) => {
             <button onClick={handleEdit}>
               Save
             </button>
-          )}
+          )} */}
         </div>
       </div>
     </div>
