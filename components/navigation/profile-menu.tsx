@@ -37,7 +37,7 @@ const ProfileMenu = () => {
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-full mb-2" side="top" align="start">
-        <DropdownMenuLabel>
+{/*         <DropdownMenuLabel>
           Created by{" "}
           <Link href="https://www.twitter.com/makrdev">@makrdev</Link>
         </DropdownMenuLabel>
@@ -66,7 +66,7 @@ const ProfileMenu = () => {
             </span>
           </div>
         </DropdownMenuItem>
-        <DropdownMenuSeparator />
+        <DropdownMenuSeparator /> */}
         <DropdownMenuItem
           onClick={() => {
             setTheme(theme === "dark" ? "light" : "dark");

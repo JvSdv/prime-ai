@@ -29,7 +29,7 @@ const Sidebar = () => {
               showMobileMenu(false);
             }}
             variant="subtle"
-            className="flex-shrink-0 w-full mt-8 sm:mt-16"
+            className="flex-shrink-0 w-full mt-4 sm:mt-8"
           >
             New Chat <Plus size="16" />
           </Button>

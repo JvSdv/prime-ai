@@ -9,25 +9,28 @@ const Logo = ({ className }: { className?: string }) => {
   useEffect(() => {
     setMounted(true);
   }, []);
+  {/* <>
+    <Image
+      className={className + " hidden dark:block"}
+      width={296}
+      height={77}
+      src="/makr-logo-light.svg"
+      alt="makr-logo"
+    />
+    <Image
+      className={className + " dark:hidden"}
+      width={296}
+      height={77}
+      src="/makr-logo-dark.svg"
+      alt="makr-logo"
+    />
+  </> */}
 
   if (!mounted) return null;
   return (
-    <>
-      <Image
-        className={className + " hidden dark:block"}
-        width={296}
-        height={77}
-        src="/makr-logo-light.svg"
-        alt="makr-logo"
-      />
-      <Image
-        className={className + " dark:hidden"}
-        width={296}
-        height={77}
-        src="/makr-logo-dark.svg"
-        alt="makr-logo"
-      />
-    </>
+    <h1 className="text-2xl font-bold text-center text-neutral-900 dark:text-neutral-50">
+      GPT PRIME
+    </h1>
   );
 };
 

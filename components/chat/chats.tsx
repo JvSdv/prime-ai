@@ -2,9 +2,20 @@
 import useChats from "@/hooks/useChats";
 import Spinner from "../ui/spinner";
 import Chat from "./chat";
+import { useState } from "react";
 
 const Chats = () => {
   const { chats, isLoading } = useChats();
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
   return (
     <div className="flex flex-col h-full mt-4 overflow-hidden">
       {/* Chats */}
@@ -14,7 +25,13 @@ const Chats = () => {
         </h3>
       )}
       {chats && !isLoading ? (
-        <div className="flex flex-col h-full gap-4 mt-2 overflow-y-auto">
+        <div
+          className={`flex flex-col h-full gap-4 mt-2 overflow-y-auto ${
+            isHovered ? "" : "scrollbar-invisible"
+          }`}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           {chats?.map((chat) => (
             <Chat key={chat.id} chat={chat} />
           ))}

@@ -101,10 +101,10 @@ const ChatInput = () => {
             }}
           />
           <MicrophoneInput />
-          <button type="submit" className="p-2">
+          <button type="submit" className="p-2 ease-in-out bg-transparent hover:bg-green-300 focus:outline-none rounded">
             <Send
               size="18"
-              className="mx-2 text-neutral-600 dark:peer-focus:text-neutral-500 peer-focus:text-neutral-300"
+              className="text-neutral-600 dark:peer-focus:text-neutral-500 peer-focus:text-neutral-300"
             />
           </button>
           {/* Regenerate Controller - Desktop */}
