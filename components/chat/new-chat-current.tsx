@@ -78,7 +78,7 @@ const NewChatCurrent = () => {
                 .update({
                   model: currentChat?.model,
                 })
-                .eq("id", currentChat?.id);
+                .eq("id", currentChat!.id);
             }}
             value={currentChat?.model as string}
           >
@@ -113,7 +113,7 @@ const NewChatCurrent = () => {
                   .update({
                     history_type: currentChat?.history_type,
                   })
-                  .eq("id", currentChat?.id);
+                  .eq("id", currentChat!.id);
               }}
               value={currentChat?.history_type}
             >

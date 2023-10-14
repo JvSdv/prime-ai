@@ -29,14 +29,14 @@ export async function POST(req: Request): Promise<Response> {
 
   try {
     // Create Embeddings
-    const { data } = await openaiClient.createEmbedding({
+    const { data } = await openaiClient.embeddings.create({
       model: "text-embedding-ada-002",
       input: messages
         .map((message: any) => message.content)
         .filter((filteredMessage: string) => filteredMessage !== ""),
     });
 
-    const embeddings = data.data;
+    const embeddings = data //verificar antes era data.data
 
     if (!embeddings) {
       return NextResponse.json(

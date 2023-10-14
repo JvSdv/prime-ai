@@ -1,7 +1,7 @@
 import { OpenAIStream } from "@/lib/openai-stream";
 import { createClient } from "@/lib/supabase/supabase-server";
 
-export const runtime = "experimental-edge";
+export const runtime = "edge";
 
 export async function POST(req: Request): Promise<Response> {
   const { payload } = await req.json();

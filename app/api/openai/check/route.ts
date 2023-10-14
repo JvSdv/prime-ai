@@ -25,7 +25,7 @@ export async function POST(req: Request): Promise<Response> {
 
   try {
     // Get Model (this will throw an error if the key is invalid)
-    await openaiClient.retrieveModel("text-davinci-003");
+    await openaiClient.models.retrieve("text-davinci-003");
 
     // Return 200 if there is no error
     return NextResponse.json("Key is valid!");

@@ -13,6 +13,8 @@ import remarkGfm from "remark-gfm";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import useMessages from "@/hooks/useMenssage";
 import { cn } from "@/utils/cn";
+import type {CodeComponent} from 'react-markdown/lib/ast-to-react';
+
 
 const Message = ({ message }: { message: MessageT }) => {
   const isAssistant = message.role === "assistant";
@@ -82,15 +84,16 @@ const Message = ({ message }: { message: MessageT }) => {
                 <ReactMarkdown
                   className="break-words markdown"
                   components={{
-                    code: ({ children, inline, className }) => {
+                    code: ({ children, className }) => {
                       const language = className?.split("-")[1];
-                      if (inline)
-                        return (
-                      <span className="px-2 py-1 text-sm rounded-md dark:bg-neutral-800 bg-neutral-50">
-                            {children}
-                          </span>
-                        );
-                        return (
+                      const match = /language-(\w+)/.exec(className || '')
+                      if (!match)
+                      return (
+                        <span className="px-2 py-1 text-sm rounded-md dark:bg-neutral-800 bg-neutral-50">
+                          {children}
+                        </span>
+                      );
+                      return (
                         <div className="w-full my-5 overflow-hidden rounded-md">
                           {/* Code Title */}
                           <div className="dark:bg-[#0d111780] bg-neutral-50 py-2 px-3 text-xs flex items-center justify-between">

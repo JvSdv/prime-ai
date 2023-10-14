@@ -111,7 +111,7 @@ const ChatSettingsMenu = () => {
                   .update({
                     model: value,
                   })
-                  .eq("id", currentChat?.id);
+                  .eq("id", currentChat!.id);
               }}
               value={currentChat?.model as string}
             >
@@ -146,7 +146,7 @@ const ChatSettingsMenu = () => {
                     .update({
                       history_type: value,
                     })
-                    .eq("id", currentChat?.id);
+                    .eq("id", currentChat!.id);
                 }}
                 value={currentChat?.history_type}
               >

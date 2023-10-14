@@ -35,7 +35,7 @@ export async function POST(req: Request): Promise<Response> {
   const typeCorrectedMessages = messages as ChatGPTMessage[];
 
   // Get Conversation Title
-  const response = await openaiClient.createChatCompletion({
+  const response = await openaiClient.chat.completions.create({
     model: model ?? "gpt-3.5-turbo",
     messages: [
       {
@@ -47,7 +47,7 @@ export async function POST(req: Request): Promise<Response> {
     ],
   });
 
-  const title = response.data.choices[0].message?.content;
+  const title = response.choices[0].message?.content;
 
   // If no title found, return 400
   if (!title) {
